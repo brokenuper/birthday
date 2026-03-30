@@ -15,7 +15,8 @@
             margin: 0;
             padding: 20px;
             text-align: center;
-            min-height: 100vh;         }
+            min-height: 100vh;         
+        }
         
         h1 {
             font-family: 'Dancing Script', cursive;
@@ -38,7 +39,7 @@
             border-radius: 8px;
             margin-top: 20px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);         
-              }
+        }
         
         p {
             color: #FFFFFF;
@@ -53,35 +54,46 @@
             border-radius: 30px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
-        /* 背景音乐播放器样式 */
-        bgm {
-        position: fixed;         
-        bottom: 10px;        
-        right: 10px;         
-        width: 30px;              
-        opacity: 0.6;          
-        z-index: 9999;        
-        border-radius: 50%;   
-        overflow: hidden;    
-       }
-              footer {
+        footer {
             margin-top: 50px; 
             text-align: center; 
             color: #eee;
             font-size: 0.9rem;
         }
+        button{
+            position: fixed; 
+            top: 10px;      
+            left: 10px;                        
+            z-index: 9999;        
+            padding: 8px 15px;                
+            cursor: pointer;       
+            background-color: #333;            
+            color: #fff;           
+            border: none;                     
+            border-radius: 4px;               
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
+
     <h1>HAPPY BIRTHDAY TO U</h1>
     <p>师傅的生日礼物还在准备，敬请期待^^</p>
     <img src="https://haowallpaper.com/link/common/file/previewFileImg/16642249197014400" alt="线条小狗">
+    
     <!-- 祝福 -->
     <h2>我的有声祝福：</h2>
-     <audio controls>
-    <source src="birthpray.mp3" type="audio/mpeg">
+    <audio controls>
+        <source src="birthpray.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- 背景音乐 (循环、隐藏) -->
+    <audio loop hidden id="bgMusic" volume="0.1">
+        <source src="dylanf-cano.mp3" type="audio/mpeg">
+    </audio>
 
-     <bgm src="dylanf-cano.mp3" loop></bgm>
+    <!-- 显眼的按钮，或者通过 JS 触发 -->
+   <button onclick="var audio = document.getElementById('bgMusic'); audio.volume = 0.2; audio.play()">🎵 点击开启背景音乐</button>
 
     <footer>
         <p>&copy; 2026 我的网页.持续更新中</p>
