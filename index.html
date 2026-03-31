@@ -60,18 +60,22 @@
             color: #eee;
             font-size: 0.9rem;
         }
-        button{
+        button {
             position: fixed; 
             top: 10px;      
             left: 10px;                        
             z-index: 9999;        
-            padding: 8px 15px;                
+            padding: 10px 20px; 
+            background-color: #FF69B4; 
             cursor: pointer;       
-            background-color: #333;            
-            color: #fff;           
+           color: #fff;           
             border: none;                     
             border-radius: 4px;               
             font-size: 14px;
+            transition: background-color 0.3s; /* 添加过渡效果 */
+        }
+        button:hover {
+            background-color: #FF1493; /* 鼠标悬停时变深粉色 */
         }
     </style>
 </head>
@@ -92,11 +96,33 @@
         <source src="dylanf-cano.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- 显眼的按钮，或者通过 JS 触发 -->
-   <button onclick="var audio = document.getElementById('bgMusic'); audio.volume = 0.2; audio.play()">🎵 点击开启背景音乐</button>
+    <!-- 修改点：按钮增加了 id，并且文字默认为“开启音乐” -->
+    <button id="musicToggle">🎵 开启背景音乐</button>
 
     <footer>
         <p>&copy; 2026 我的网页.持续更新中</p>
     </footer>
+
+    <!-- 修改点：JavaScript 实现开关逻辑 -->
+    <script>
+        // 获取按钮元素和音频元素
+        var btn = document.getElementById('musicToggle');
+        var audio = document.getElementById('bgMusic');
+
+        // 给按钮添加点击事件
+        btn.onclick = function() {
+            if (audio.paused) {
+                // 如果当前是暂停状态，就播放
+                audio.play();
+                btn.innerHTML = '⏸ 暂停背景音乐'; // 修改按钮文字
+                btn.style.backgroundColor = '#FF1493'; // 修改按钮颜色（深粉）
+            } else {
+                // 如果当前是播放状态，就暂停
+                audio.pause();
+                btn.innerHTML = '🎵 开启背景音乐'; // 修改按钮文字
+                btn.style.backgroundColor = '#FF69B4'; // 修改按钮颜色（浅粉）
+            }
+        };
+    </script>
 </body>
 </html>
